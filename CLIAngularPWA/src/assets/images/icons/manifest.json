@@ -1,0 +1,15 @@
+{
+  "short_name": "TrackingPWA",
+  "name": "Tracking PWA APP",
+  "icons": [
+    {
+      "src": "/assets/images/icons/light-bulb.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "Theme_color": "#f48c5b",
+  "display": "standalone"
+}

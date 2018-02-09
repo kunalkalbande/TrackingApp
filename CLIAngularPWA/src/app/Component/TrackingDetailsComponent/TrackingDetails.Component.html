@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-dark bg-primary fixed-top">
+    <span class="navbar-brand mb-0 h1">Tracking Details</span>
+  </nav>
+  <div class="row card-group" style="margin-top:50px">
+    <div class="col-md-2 text-center mt-4" *ngFor="let subcarrier of SubCarriers">
+        <div class="card" (click)="shwoSubCarrierDetails(subcarrier.Carrierid)">
+          <h5 class="card-title">subcarrier: {{subcarrier.Code}}</h5>
+          <p class="card-text">Count: {{subcarrier.CNT}}</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+
+  

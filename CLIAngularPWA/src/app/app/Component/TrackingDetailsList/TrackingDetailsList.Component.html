@@ -1,0 +1,30 @@
+<nav class="navbar navbar-dark bg-primary">
+  <span class="navbar-brand mb-0 h1">Tracking Subdetails </span>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row card-group ">
+    <div class="col-md-12 text-center mt-4" *ngFor="let subcarrier of detailsList">
+      <div class="card">
+        <h5 class="card-title">{{subcarrier.Company}}</h5>
+        <!--<p class="card-text">
+    {{subcarrier.ActDateTime}}{{subcarrier.CarrierId}}{{subcarrier.Company}}{{subcarrier.DeleteFlag}}{{subcarrier.DiscountedTotalFreight}}{{subcarrier.EstDateTime}}{{subcarrier.Id}}{{subcarrier.IsLate}}{{subcarrier.LastScannedAt}}
+    {{subcarrier.Location}}{{subcarrier.ManifestDate}}{{subcarrier.OrganizationId}}{{subcarrier.PackageId}}{{subcarrier.Package_PackageId}}{{subcarrier.ParentCarrierId}}{{subcarrier.PublishedTotalFreight}}{{subcarrier.ServiceId}}
+    {{subcarrier.ShipTo}}{{subcarrier.SignedBy}}{{subcarrier.SiteId}}{{subcarrier.SpecialServices}}{{subcarrier.Status}}{{subcarrier.StatusDescription}}{{subcarrier.TrackingNumber}}{{subcarrier.UserComments}}{{subcarrier.Zip}}
+  </p>-->
+
+        <p class="card-text">
+          Active Date Time: {{subcarrier.ActDateTime}}  Carrier Id: {{subcarrier.CarrierId}} Company: {{subcarrier.Company}} Delete Flag: {{subcarrier.DeleteFlag}} Discounted Total Freight: {{subcarrier.DiscountedTotalFreight}} Estimated DateTime{{subcarrier.EstDateTime}} ID: {{subcarrier.Id}} IsLate: {{subcarrier.IsLate}} Last Scanned At: {{subcarrier.LastScannedAt}}
+          Location: {{subcarrier.Location}} Manifest Date: {{subcarrier.ManifestDate}} Organization Id: {{subcarrier.OrganizationId}} Package ID:{{subcarrier.PackageId}} Package_PackageId: {{subcarrier.Package_PackageId}} Parent Carrier Id: {{subcarrier.ParentCarrierId}} Published Total Freight: {{subcarrier.PublishedTotalFreight}} Service Id: {{subcarrier.ServiceId}}
+          Ship To: {{subcarrier.ShipTo}} Signed By: {{subcarrier.SignedBy}} Site Id: {{subcarrier.SiteId}} Special Services: {{subcarrier.SpecialServices}} Status: {{subcarrier.Status}} Status Description:{{subcarrier.StatusDescription}} Tracking Number: {{subcarrier.TrackingNumber}} User Comments: {{subcarrier.UserComments}} Zip:{{subcarrier.Zip}}
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
