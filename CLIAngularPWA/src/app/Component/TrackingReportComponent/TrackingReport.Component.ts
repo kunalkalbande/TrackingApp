@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerInputEvent } from '@angular/material';
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
+//import { Alert, AlertType } from '../_models/alert';
 //import { NgForm } from '@angular/forms';
 
 @Component({
@@ -71,7 +72,7 @@ export class TrackingReportComponent {
       this.startDate = event.value.toString();
     } else {
       
-      alert("Please select From Date less than To Date.");
+      alert("WARNING :Please select From Date less than To Date.")
     }
   }
 
@@ -85,7 +86,7 @@ export class TrackingReportComponent {
       this.endDate = event.value.toString();
     } else {
       
-      alert("Please select To Date greater than From Date.");
+      alert("WARNING: Please select To Date greater than From Date.");
     }
   }
 
@@ -101,14 +102,15 @@ export class TrackingReportComponent {
     if (vendor != "0" || this.shippingVendor == undefined) {
       this.shippingVendor = vendor;
     } else {
-      this.shippingVendor = "0"; 
-      alert("Please select Shipping Vendor.");
+      this.shippingVendor = "0";
+      Error("WARNING: Please select Shipping Vendor.")
+      //alert("Please select Shipping Vendor.");
     }
   }
 
   // This button should be used for form submit and call web api
   showShippingStatusClicked(event) {
-    
+   
     let ship = typeof (this.shippingVendor);
     this.strStartDate = moment(this.startDate).format('YYYY-MM-DD');
     this.strEndDate = moment(this.endDate).format('YYYY-MM-DD');
@@ -118,21 +120,23 @@ export class TrackingReportComponent {
     let dtEndDate = Date.parse(this.endDate);
     if ((this.shippingVendor == "0" || this.shippingVendor == undefined || typeof (this.shippingVendor) == "object") && (dtStartDate > dtEndDate)) {
 
-      alert("Please select Shipping Vendor. Please select To Date greater than From Date.");
+      alert("ERROR: Please select Shipping Vendor. Please select To Date greater than From Date.");
     }
     else if (this.shippingVendor == "0" || this.shippingVendor == undefined) {
 
-      alert("Please select Shipping Vendor.");
+      alert("ERROR: Please select Shipping Vendor.");
     }
     else if (dtStartDate > dtEndDate){
-      alert("Please select To Date greater than From Date.");
+      alert("ERROR: Please select To Date greater than From Date.");
     }
     else {
+      
       this._empServices.get_StatusCount(this.strStartDate, this.strEndDate, this.shippingVendor).subscribe((stausCnt) => this.deliveryStatusCnt = stausCnt);
     }
   }
 
   shwoShippingDetails(status) {
+
     
     this.strStartDate = moment(this.startDate).format('YYYY-MM-DD');
     this.strEndDate = moment(this.strEndDate).format('YYYY-MM-DD');

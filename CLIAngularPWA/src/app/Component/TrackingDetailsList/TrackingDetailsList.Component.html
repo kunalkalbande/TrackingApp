@@ -8,10 +8,10 @@
 
   <div class="card-group" style="margin-top:50px">
     <div class="col-lg-3 mt-4" *ngFor="let subcarrier of detailsList">
-      <div class="card">
+      <div class="card" border-secondary>
         <div class="card-header">
-          <h4 class="card-title">{{subcarrier.Company}}</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Tracking Number: {{subcarrier.TrackingNumber}}</h6>
+          <h4 class="card-title border-secondary">{{subcarrier.Company}}</h4>
+          <h6 class="card-subtitle mb-2 text-muted border-secondary">Tracking Number: {{subcarrier.TrackingNumber}}</h6>
           <p class="card-text"></p>
 
         </div>
@@ -21,7 +21,7 @@
           <li class="list-group-item">Published Total Freight: {{subcarrier.PublishedTotalFreight}}</li>
         </ul>-->
 
-        <table class="table">
+        <table class="table bg-info border-secondary">
           <tbody>
             <tr>
               <td>Discounted Total Freight:</td>
@@ -44,142 +44,112 @@
           </tbody>
         </table>
 
-        <div class="card-footer text-muted">
+        <div class="card-footer text-muted ">
 
-          <a class="btn btn-primary" data-toggle="collapse" href="{{'#'+ subcarrier.TrackingNumber}}" (click)="openModal()" aria-expanded="false" aria-controls="collapseExample">
+          <!--<a class="btn btn-primary" data-target="#exampleModal" data-toggle="collapse" (click)="openModal()" aria-expanded="false" aria-controls="collapseExample">
             View Details
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </a>
+            <span class="glyphicon glyphicon-search border-secondary" aria-hidden="true"></span>
+          </a>-->
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            View Details
+          </button>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header bg-light">
+                  <h4 class="modal-title ">{{subcarrier.Company}}</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body" style="overflow:auto;">
+                  <h6>Tracking Number: {{subcarrier.TrackingNumber}}</h6>
+
+                  <div class="container-fluid bg-info">
+                    <div class="row">
+                      <div class="col-6 col-md-6 text-dark">
+                        Active Date Time:
+                      </div>
+                      <div class="col-6 col-md-6 text-dark">
+                        {{subcarrier.ActDateTime}}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 col-md-6 text-dark">
+                        Delivery On Time:
+                      </div>
+                      <div class="col-6 col-md-6 text-dark">
+                        {{subcarrier.IsLate== 1 ? 'Yes': 'No'}}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 col-md-6 text-dark">
+                        Ship To:
+                      </div>
+                      <div class="col-6 col-md-6 text-dark">
+                        {{subcarrier.ShipTo == ''?'-' : subcarrier.ShipTo}}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 col-md-6 text-dark">
+                        Signed By:
+                      </div>
+                      <div class="col-6 col-md-6 text-dark">
+                        {{subcarrier.SignedBy == ''?'-' : subcarrier.SignedBy}}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-6 col-md-6 text-dark">
+                        Special Services:
+                      </div>
+                      <div class="col-6 col-md-6 text-dark">
+                        {{subcarrier.SpecialServices == ''?'-': subcarrier.SpecialServices}}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 col-md-6 text-dark">
+                        Status:
+                      </div>
+                      <div class="col-6 col-md-6 text-dark">
+                        {{subcarrier.Status == -1 ? 'Error' : subcarrier.Status == 0 ? 'NoStatus' : subcarrier.Status == 1 ? 'InTransit': 'Delivered'}}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 col-md-6 text-dark">
+                        User Comments:
+                      </div>
+                      <div class="col-6 col-md-6 text-dark">
+                        {{subcarrier.UserComments == ''?'-': subcarrier.UserComments}}
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <agm-map [latitude]="lat" [longitude]="lng">
+                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                      </agm-map>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="modal-footer bg-light">
+                  <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!--<div class="text-center">
             <button type="button" class="btn btn-dark" (click)="openModal()">View on Map</button>
           </div>-->
         </div>
 
-        <div class="collapse" id="{{subcarrier.TrackingNumber}}">
-          <!-- open a modal window by clicking button-->
-          <!-- Modal section -->
-          <div class="backdrop" [ngStyle]="{'display':display}"></div>
-          <div class="modal" id="{{subcarrier.TrackingNumber}}" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">{{subcarrier.Company}}</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
-                </div>
 
-                <div class="modal-body" style="overflow:auto">
-                  <h6>Tracking Number: {{subcarrier.TrackingNumber}}</h6>
-
-                  <div class="container-fluid">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <table class="table">
-                          <tbody>
-                            <tr>
-                              <td>Active Date Time</td>
-                              <td>{{subcarrier.ActDateTime}}</td>
-                            </tr>
-                            <tr>
-                              <td>Carrier Id</td>
-                              <td>{{subcarrier.CarrierId}}</td>
-
-                            </tr>
-
-                            <!--<tr>
-                              <td>Delete Flag</td>
-                              <td>{{subcarrier.DeleteFlag}}</td>
-                            </tr>-->
-                            <!--<tr>
-                              <td>Estimated DateTime</td>
-                              <td>{{subcarrier.EstDateTime}}</td>
-                            </tr>-->
-                            <!--<tr>
-                              <td>ID</td>
-                              <td>{{subcarrier.Id}}</td>
-                            </tr>-->
-                            <tr>
-                              <td>IsLate</td>
-                              <td>{{subcarrier.IsLate== 1 ? 'Yes': 'No'}}</td>
-                            <tr>
-                              <td>Location</td>
-                              <td>{{subcarrier.Location}}</td>
-                            </tr>
-
-
-
-                            <!--<tr>
-                              <td>Organization Id</td>
-                              <td>{{subcarrier.OrganizationId}}</td>
-                            </tr>-->
-                            <!--<tr>
-                              <td>Package ID</td>
-                              <td>{{subcarrier.PackageId}}</td>
-                            </tr>-->
-                            <!--<tr>
-                              <td>Package_PackageId</td>
-                              <td>{{subcarrier.Package_PackageId}}</td>
-                            </tr>-->
-                            <!--<tr>
-                              <td>Parent Carrier Id</td>
-                              <td>{{subcarrier.ParentCarrierId}}</td>
-                            </tr>-->
-                            <!--<tr>
-                              <td>Service Id</td>
-                              <td>{{subcarrier.ServiceId}}</td>
-                            </tr>-->
-                            <tr>
-                              <td>ShipTo</td>
-                              <td>{{subcarrier.ShipTo}}</td>
-                            </tr>
-                            <tr>
-                              <td>Signed By</td>
-                              <td>{{subcarrier.SignedBy}}</td>
-                            </tr>
-                            <!--<tr>
-                              <td>Site Id</td>
-                              <td>{{subcarrier.SiteId}}</td>
-                            </tr>-->
-                            <tr>
-                              <td>Special Services</td>
-                              <td>{{subcarrier.SpecialServices}}</td>
-                            </tr>
-                            <tr>
-                              <td>Status </td>
-                              <td>       {{subcarrier.Status == -1 ? 'Error' : subcarrier.Status == 0 ? 'NoStatus' : subcarrier.Status == 1 ? 'InTransit': 'Delivered'}}</td>
-                            </tr>
-                            <!--<tr>
-                              <td>Status Description</td>
-                              <td>{{subcarrier.StatusDescription}}</td>
-                            </tr>-->
-                            <tr>
-                              <td>User Comments</td>
-                              <td>{{subcarrier.UserComments}}</td>
-                            </tr>
-
-
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="col-md-7">
-                        <agm-map [latitude]="lat" [longitude]="lng">
-                          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                        </agm-map>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" (click)="onCloseHandled()">Close</button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
       </div><!-- /.modal !-->
+
+
     </div>
 
 

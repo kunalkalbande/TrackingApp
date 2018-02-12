@@ -1,60 +1,74 @@
-<nav class="navbar navbar-dark bg-primary fixed-top" >
+<nav class="navbar navbar-dark bg-primary fixed-top">
   <span class="navbar-brand mb-0 h1">Tracking Report</span>
 </nav>
 
-<div class="container-fluid" style="margin-top:50px">
-  <div class="jumbotron ">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="form-row">
-          <div class="col-md-3">
 
-            <label>From Date</label>
-            <input matInput [matDatepicker]="startAtPicker" [ngModel] ="startDate | date:'yyyy-MM-dd'"   placeholder="Start date" (dateChange)="startDateChanged($event)"
-                   [disabled]="inputDisabled">
-            <mat-datepicker-toggle matSuffix [for]="startAtPicker"></mat-datepicker-toggle>
-            <mat-datepicker #startAtPicker [touchUi]="touch" [disabled]="datepickerDisabled"></mat-datepicker>
-          </div>
 
-          <div class="col-md-3">
-            <label>To Date</label>
-            <input matInput [matDatepicker]="endAtPicker" [ngModel] ="endDate | date:'yyyy-MM-dd'" placeholder="End date" (dateChange)="endDateChanged($event)"
-                   [disabled]="inputDisabled">
-            <mat-datepicker-toggle matSuffix [for]="endAtPicker"></mat-datepicker-toggle>
-            <mat-datepicker #endAtPicker [touchUi]="touch" [disabled]="datepickerDisabled"></mat-datepicker>
-          </div>
-          <div class="col-md-3 form-inline">
-            <label for="sel1">Select Vendor</label>
-            <select class="form-control" id="sel1" placeholder="Select Shipping Vendor"  [(value)]="currentCourier"   (change)="onChangeVendor($event)" style="width:70%">
-              <option selected="selected" value="0" > --Select-- </option>
-              <option *ngFor="let emp of employees" [value]="emp.PARENTCARRIERID"> {{emp.CODE}} </option>
-            </select>
-          </div>
-          <div class="col-md-3">
+<div class="container-fluid" style=" margin-top:80px">
+  <div class="alert" style="background-color:#F0F0F0">
+    <div class="form-row">
+      <div class="col-sm-3">
+        <label>From Date</label>
+        <div class="form-inline">
+          <input matInput [matDatepicker]="startAtPicker" [ngModel]="startDate | date:'yyyy-MM-dd'" placeholder="Start date" (dateChange)="startDateChanged($event)" style="width:60%"
+                 [disabled]="inputDisabled">
 
-            <button type="button" class="btn btn-primary"  (click)="showShippingStatusClicked($event)"> Show Shipping Status </button>
-          </div>
+          <mat-datepicker-toggle matSuffix [for]="startAtPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startAtPicker [touchUi]="touch" [disabled]="datepickerDisabled"></mat-datepicker>
+
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <label>To Date</label>
+        <div class="form-inline">
+          <input matInput [matDatepicker]="endAtPicker" [ngModel]="endDate | date:'yyyy-MM-dd'" placeholder="End date" (dateChange)="endDateChanged($event)" style="width:60%"
+                 [disabled]="inputDisabled">
+          <mat-datepicker-toggle matSuffix [for]="endAtPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endAtPicker [touchUi]="touch" [disabled]="datepickerDisabled"></mat-datepicker>
+
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <label for="sel1">Vendor</label>
+        <div class="form-inline">
+          <select class="form-control" id="sel1" placeholder="Select Shipping Vendor" [(value)]="currentCourier" (change)="onChangeVendor($event)" style="width:80%">
+            <option selected="selected" value="0"> --Select-- </option>
+            <option *ngFor="let emp of employees" [value]="emp.PARENTCARRIERID"> {{emp.CODE}} </option>
+          </select>
+
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <label></label>
+        <div class="form-inline">
+          <button style="margin-top:10px" type="button" class="btn btn-primary" (click)="showShippingStatusClicked($event)"> Show Shipping Status </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class=" row">
+
+  <div class="col-sm-12">
+    <div class="row card-group ">
+      <div class="col-md-3 text-center mt-4" *ngFor="let statusCnt of deliveryStatusCnt">
+        <div class="card z-depth-5 " (click)="shwoShippingDetails(statusCnt.Status)">
+          <h5 class="card-title bg-secondary">Status: {{statusCnt.Status == -1 ? 'Error' : statusCnt.Status == 0 ? 'NoStatus' : statusCnt.Status == 1 ? 'InTransit': 'Delivered'}}</h5>
+          <p class="card-text bg-info">Count: {{statusCnt.CNT}}</p>
+
         </div>
       </div>
     </div>
   </div>
 
-  <div class=" row">
-    
-    <div class="col-sm-12">
-      <div class="row card-group ">
-        <div class="col-md-3 text-center mt-4" *ngFor="let statusCnt of deliveryStatusCnt">
-          <div class="card z-depth-5" (click)="shwoShippingDetails(statusCnt.Status)">
-            <h5 class="card-title">Status: {{statusCnt.Status == -1 ? 'Error' : statusCnt.Status == 0 ? 'NoStatus' : statusCnt.Status == 1 ? 'InTransit': 'Delivered'}}</h5>
-            <p class="card-text">Count: {{statusCnt.CNT}}</p>
-
-          </div>
-        </div>
-      </div>
-    </div>
 
 
+</div>
 
-  </div>
-  </div>
 

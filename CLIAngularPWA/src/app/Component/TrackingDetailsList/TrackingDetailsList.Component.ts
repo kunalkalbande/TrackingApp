@@ -18,8 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 
 export class TrackingDetailsListComponent {
-  display='none';
-  
+  display = 'none';
+  hideModal: boolean = false;
 
   strStartDate: string;
   strEndDate: string;
@@ -29,7 +29,7 @@ export class TrackingDetailsListComponent {
 
   currentCourierId: string;
 
-  detailsList : Array<any> = [];
+  detailsList: Array<any> = [];
   errorMessage: any;
   currentId: number = 0;
 
@@ -45,15 +45,16 @@ export class TrackingDetailsListComponent {
       this.strEndDate = params['endDate'];
       this.currentCourierId = params['parentCarrierId'];
       this.deliveryStatus = params['deliveryStatus'];
-    });    
+    });
   }
 
   openModal() {
     this.display = "block";
-    }
+  }
 
 
   onCloseHandled() {
+
     this.display = 'none';
   }
 
@@ -67,7 +68,7 @@ export class TrackingDetailsListComponent {
   }
 
   getListDetails() {
-    
+
     this._trackingServices.GetCarrierDetailsList(this.strStartDate, this.strEndDate, this.currentCourierId, this.deliveryStatus).subscribe((listData) => this.detailsList = listData);
   }
 
