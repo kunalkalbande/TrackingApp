@@ -37,7 +37,7 @@ export class TrackingReportComponent {
   deliveryStatus: number;
   shippingVendor: string;
 
-  employees: Array<any> = [];
+  shippingStatus: Array<any> = [];
   deliveryStatusCnt: Array<any> = [];
 
   errorMessage: any;
@@ -92,7 +92,7 @@ export class TrackingReportComponent {
 
   getShippingVendor() {
     
-    this._empServices.get_shipping_vendors().subscribe((empdata) => this.employees = empdata);
+    this._empServices.get_shipping_vendors().subscribe((shippingStatusdata) => this.shippingStatus = shippingStatusdata);
   }
 
   onChangeVendor(event) {

@@ -5,8 +5,8 @@
   <div class="row card-group" style="margin-top:50px">
     <div class="col-md-2 text-center mt-4" *ngFor="let subcarrier of SubCarriers">
         <div class="card" (click)="shwoSubCarrierDetails(subcarrier.Carrierid)">
-          <h5 class="card-title bg-secondary">subcarrier: {{subcarrier.Code}}</h5>
-          <p class="card-text bg-info">Count: {{subcarrier.CNT}}</p>
+          <h5 class="card-title bg-info">{{subcarrier.Code}}</h5>
+          <h6 class="card-text text-dark">{{subcarrier.CNT}}</h6>
           
         </div>
       </div>

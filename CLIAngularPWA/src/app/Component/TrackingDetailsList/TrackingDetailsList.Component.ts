@@ -68,7 +68,7 @@ export class TrackingDetailsListComponent {
   }
 
   getListDetails() {
-
+   
     this._trackingServices.GetCarrierDetailsList(this.strStartDate, this.strEndDate, this.currentCourierId, this.deliveryStatus).subscribe((listData) => this.detailsList = listData);
   }
 
