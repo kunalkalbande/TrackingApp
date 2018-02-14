@@ -4,15 +4,25 @@
   </nav>
   <div class="row card-group" style="margin-top:50px">
     <div class="col-md-2 text-center mt-4" *ngFor="let subcarrier of SubCarriers">
-        <div class="card" (click)="shwoSubCarrierDetails(subcarrier.Carrierid)">
-          <h5 class="card-title bg-info">{{subcarrier.Code}}</h5>
-          <h6 class="card-text text-dark">{{subcarrier.CNT}}</h6>
-          
-        </div>
+      <div class="card" (click)="shwoSubCarrierDetails(subcarrier.Carrierid)">
+        <h5 *ngIf="deliveryStatus == -1" class="card-title  bg-danger">{{subcarrier.Code}}</h5>
+        <h3 *ngIf="deliveryStatus == -1" class="card-title card-body bg-danger text-dark">{{subcarrier.CNT}}</h3>
+      </div>
+      <div class="card" (click)="shwoSubCarrierDetails(subcarrier.Carrierid)">
+        <h5 *ngIf="deliveryStatus == 0" class="card-title bg-warning">{{subcarrier.Code}}</h5>
+        <h3 *ngIf="deliveryStatus == 0" class="card-title card-body card-header bg-warning text-dark">{{subcarrier.CNT}}</h3>
+      </div>
+      <div class="card" (click)="shwoSubCarrierDetails(subcarrier.Carrierid)">
+        <h5 *ngIf="deliveryStatus == 1" class="card-title bg-primary">{{subcarrier.Code}}</h5>
+        <h3 *ngIf="deliveryStatus == 1" class="card-title card-body bg-primary text-dark">{{subcarrier.CNT}}</h3>
+      </div>
+      <div class="card" (click)="shwoSubCarrierDetails(subcarrier.Carrierid)">
+        <h5 *ngIf="deliveryStatus == 2" class="card-title bg-success">{{subcarrier.Code}}</h5>
+        <h3 *ngIf="deliveryStatus == 2" class="card-title card-body bg-success text-dark">{{subcarrier.CNT}}</h3>
       </div>
     </div>
   </div>
- 
+</div>
 
 
-  
+

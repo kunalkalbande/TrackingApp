@@ -84,13 +84,13 @@ export class AppComponent {
 
   ngOnInit() {
     if (this._activatedRoute.snapshot.params["id"])
-      //debugger
+      
       this.currentId = parseInt(this._activatedRoute.snapshot.params["id"]);
-    this.getPrimarySecReportDtls()
+      this.getPrimarySecReportDtls()
   }
 
   getPrimarySecReportDtls() {
-    debugger;
+    
     this._empServices.get_shipping_vendors().subscribe((empdata) => this.employees = empdata);
   }
 
