@@ -59,14 +59,14 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header bg-light">
-                  <h4 class="modal-title ">{{subcarrier.Company}}</h4>
+                  <h4 class="modal-title" >{{subcarrier.Company}}</h4>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body" style="overflow:auto;">
                   <h6>Tracking Number: {{subcarrier.TrackingNumber}}</h6>
 
                   <div class="container-fluid bg-info">
-                    <div class="row">
+                    <div class="row" >
                       <div class="col-6 col-md-6 text-dark">
                         Active Date Time:
                       </div>
@@ -81,6 +81,14 @@
                       </div>
                       <div class="col-6 col-md-6 text-dark">
                         {{subcarrier.IsLate== 1 ? 'Yes': 'No'}}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 col-md-6 text-dark">
+                        Location:
+                      </div>
+                      <div class="col-6 col-md-6 text-dark">
+                        {{subcarrier.Location == ''?'-' : subcarrier.Location}}
                       </div>
                     </div>
 
