@@ -59,13 +59,13 @@
       <div class="col-md-3 text-center mt-4" *ngFor="let statusCnt of deliveryStatusCnt">
         <div class="card z-depth-5 " (click)="shwoShippingDetails(statusCnt.Status)">
           <h6 class="card-header bg-danger" *ngIf="statusCnt.Status == -1">{{'Error'}}</h6>
-          <h3 class="card-header  bg-danger text-dark" *ngIf="statusCnt.Status == -1">{{statusCnt.CNT}}</h3>
+          <h2 class="card-header  bg-danger  text-white" *ngIf="statusCnt.Status == -1">{{statusCnt.CNT}}</h2>
           <h6 class="card-header bg-warning" *ngIf="statusCnt.Status == 0">{{'NoStatus'}}</h6>
-          <h3 class="card-header bg-warning text-dark" *ngIf="statusCnt.Status == 0">{{statusCnt.CNT}}</h3>
+          <h2 class="card-header bg-warning  text-white" *ngIf="statusCnt.Status == 0">{{statusCnt.CNT}}</h2>
           <h6 class="card-header  bg-success" *ngIf="statusCnt.Status == 2">{{'Delivered'}}</h6>
-          <h3 class="card-header bg-success text-dark" *ngIf="statusCnt.Status == 2">{{statusCnt.CNT}}</h3>
+          <h2 class="card-header bg-success  text-white" *ngIf="statusCnt.Status == 2">{{statusCnt.CNT}}</h2>
           <h6 class="card-header bg-primary " *ngIf="statusCnt.Status == 1">{{'InTransit'}}</h6>
-          <h3 class="card-header bg-primary text-dark" *ngIf="statusCnt.Status == 1">{{statusCnt.CNT}}</h3>
+          <h2 class="card-header bg-primary  text-white" *ngIf="statusCnt.Status == 1">{{statusCnt.CNT}}</h2>
         </div>
       </div>
     </div>

@@ -5,17 +5,17 @@
   <div class="row card-group" style="margin-top:50px">
     <div class="col-lg-3 mt-4" *ngFor="let subcarrier of SubCarriers">
       <div class="card" (click)="shwoSubCarrierDetails(subcarrier.Carrierid)">
-        <h6 *ngIf="deliveryStatus == -1" class="card-header  bg-danger">{{subcarrier.Code}}</h6>
-        <h3 *ngIf="deliveryStatus == -1" class="card-header card-body bg-danger text-dark">{{subcarrier.CNT}}</h3>
+        <h6 *ngIf="deliveryStatus == -1" class="card-header text-center bg-danger">{{subcarrier.Code}}</h6>
+        <h2 *ngIf="deliveryStatus == -1" class="card-header text-center card-body bg-danger text-white">{{subcarrier.CNT}}</h2>
       
-        <h6 *ngIf="deliveryStatus == 0" class="card-header bg-warning">{{subcarrier.Code}}</h6>
-        <h3 *ngIf="deliveryStatus == 0" class="card-header card-body card-header bg-warning text-dark">{{subcarrier.CNT}}</h3>
+        <h6 *ngIf="deliveryStatus == 0" class="card-header text-center bg-warning">{{subcarrier.Code}}</h6>
+        <h2 *ngIf="deliveryStatus == 0" class="card-header text-center card-body card-header bg-warning text-white">{{subcarrier.CNT}}</h2>
       
-        <h6 *ngIf="deliveryStatus == 1" class="card-header bg-primary">{{subcarrier.Code}}</h6>
-        <h3 *ngIf="deliveryStatus == 1" class="card-header card-body bg-primary text-dark">{{subcarrier.CNT}}</h3>
+        <h6 *ngIf="deliveryStatus == 1" class="card-header text-center bg-primary">{{subcarrier.Code}}</h6>
+        <h2 *ngIf="deliveryStatus == 1" class="card-header text-center card-body bg-primary text-white">{{subcarrier.CNT}}</h2>
       
-        <h6 *ngIf="deliveryStatus == 2" class="card-header bg-success">{{subcarrier.Code}}</h6>
-        <h3 *ngIf="deliveryStatus == 2" class="card-header card-body bg-success text-dark">{{subcarrier.CNT}}</h3>
+        <h6 *ngIf="deliveryStatus == 2" class="card-header text-center bg-success">{{subcarrier.Code}}</h6>
+        <h2 *ngIf="deliveryStatus == 2" class="card-header text-center card-body bg-success text-white">{{subcarrier.CNT}}</h2>
       
     </div>
   </div>
