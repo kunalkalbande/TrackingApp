@@ -24,12 +24,14 @@ export class TrackingDetailsListComponent {
   strStartDate: string;
   strEndDate: string;
 
+  carrier: string;
   deliveryStatus: string;
   shippingVendor: string;
 
   currentCourierId: string;
 
   detailsList: Array<any> = [];
+  selectedDetailsList: Array<any> = [];
   errorMessage: any;
   currentId: number = 0;
 
@@ -68,10 +70,18 @@ export class TrackingDetailsListComponent {
   }
 
   getListDetails() {
-   
+
     this._trackingServices.GetCarrierDetailsList(this.strStartDate, this.strEndDate, this.currentCourierId, this.deliveryStatus).subscribe((listData) => this.detailsList = listData);
   }
 
+  viewDetails(id) {
+
+
+    this.carrier = id;
+    this._trackingServices.GetCarrierDetailsList(this.strStartDate, this.strEndDate, this.currentCourierId, this.deliveryStatus).subscribe((listData) => this.detailsList = listData);
+    this.selectedDetailsList = this.detailsList.filter(item => item.Id == id);
+    this.display = "block";
+  }
 
   //myEvent(event) {
   //  console.log(event);

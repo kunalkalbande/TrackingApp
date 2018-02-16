@@ -51,27 +51,27 @@
             <span class="glyphicon glyphicon-search border-secondary" aria-hidden="true"></span>
           </a>-->
 
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          <button type="button" class="btn btn-primary" (click)="viewDetails(subcarrier.Id)" data-target="#exampleModal">
             View Details
           </button>
 
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
+          <div class="modal" role="dialog" tabindex="-1" [ngStyle]="{'display':display}" id="exampleModal">
+            <div class="modal-dialog">
+              <div class="modal-content" *ngFor="let carrierDetails of selectedDetailsList">
                 <div class="modal-header bg-light">
-                  <h4 class="modal-title" >{{subcarrier.Company}}</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">{{carrierDetails.Company}}</h4>
+                  <button type="button" class="close" (click)="onCloseHandled()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <div class="modal-body" style="overflow:auto;">
-                  <h6>Tracking Number: {{subcarrier.TrackingNumber}}</h6>
+                <div class="modal-body" style="height:460px">
+                  <h6>Tracking Number: {{carrierDetails.TrackingNumber}}</h6>
 
                   <div class="container-fluid bg-info">
-                    <div class="row" >
+                    <div class="row">
                       <div class="col-6 col-md-6 text-dark">
                         Active Date Time:
                       </div>
                       <div class="col-6 col-md-6 text-dark">
-                        {{subcarrier.ActDateTime}}
+                        {{carrierDetails.ActDateTime}}
                       </div>
                     </div>
 
@@ -80,7 +80,7 @@
                         Delivery On Time:
                       </div>
                       <div class="col-6 col-md-6 text-dark">
-                        {{subcarrier.IsLate== 1 ? 'Yes': 'No'}}
+                        {{carrierDetails.IsLate== 1 ? 'Yes': 'No'}}
                       </div>
                     </div>
                     <div class="row">
@@ -88,7 +88,7 @@
                         Location:
                       </div>
                       <div class="col-6 col-md-6 text-dark">
-                        {{subcarrier.Location == ''?'-' : subcarrier.Location}}
+                        {{carrierDetails.Location == ''?'-' : carrierDetails.Location}}
                       </div>
                     </div>
 
@@ -97,7 +97,7 @@
                         Ship To:
                       </div>
                       <div class="col-6 col-md-6 text-dark">
-                        {{subcarrier.ShipTo == ''?'-' : subcarrier.ShipTo}}
+                        {{carrierDetails.ShipTo == ''?'-' : carrierDetails.ShipTo}}
                       </div>
                     </div>
 
@@ -106,7 +106,7 @@
                         Signed By:
                       </div>
                       <div class="col-6 col-md-6 text-dark">
-                        {{subcarrier.SignedBy == ''?'-' : subcarrier.SignedBy}}
+                        {{carrierDetails.SignedBy == ''?'-' : carrierDetails.SignedBy}}
                       </div>
                     </div>
 
@@ -115,7 +115,7 @@
                         Special Services:
                       </div>
                       <div class="col-6 col-md-6 text-dark">
-                        {{subcarrier.SpecialServices == ''?'-': subcarrier.SpecialServices}}
+                        {{carrierDetails.SpecialServices == ''?'-': carrierDetails.SpecialServices}}
                       </div>
                     </div>
                     <div class="row">
@@ -123,7 +123,7 @@
                         Status:
                       </div>
                       <div class="col-6 col-md-6 text-dark">
-                        {{subcarrier.Status == -1 ? 'Error' : subcarrier.Status == 0 ? 'NoStatus' : subcarrier.Status == 1 ? 'InTransit': 'Delivered'}}
+                        {{carrierDetails.Status == -1 ? 'Error' : carrierDetails.Status == 0 ? 'NoStatus' : carrierDetails.Status == 1 ? 'InTransit': 'Delivered'}}
                       </div>
                     </div>
                     <div class="row">
@@ -131,7 +131,7 @@
                         User Comments:
                       </div>
                       <div class="col-6 col-md-6 text-dark">
-                        {{subcarrier.UserComments == ''?'-': subcarrier.UserComments}}
+                        {{carrierDetails.UserComments == ''?'-': carrierDetails.UserComments}}
                       </div>
                     </div>
                     <div class="col-md-7">
@@ -143,7 +143,7 @@
 
                 </div>
                 <div class="modal-footer bg-light">
-                  <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+                  <button type="button" (click)="onCloseHandled()" class="btn btn-primary">Close</button>
                 </div>
               </div>
             </div>
