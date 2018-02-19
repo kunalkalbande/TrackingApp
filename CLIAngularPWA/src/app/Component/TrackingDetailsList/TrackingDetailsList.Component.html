@@ -9,9 +9,9 @@
   <div class="card-group" style="margin-top:50px">
     <div class="col-lg-3 mt-4" *ngFor="let subcarrier of detailsList">
       <div class="card" border-secondary>
-        <div class="card-header">
-          <h4 class="card-title border-secondary">{{subcarrier.Company}}</h4>
-          <h6 class="card-subtitle mb-2 text-muted border-secondary">Tracking Number: {{subcarrier.TrackingNumber}}</h6>
+        <div class="card-header bg-info">
+          <h4 class="card-title  border-secondary">{{subcarrier.Company}}</h4>
+          <h6 class="card-subtitle mb-2 text-dark border-secondary">Tracking Number: {{subcarrier.TrackingNumber}}</h6>
           <p class="card-text"></p>
 
         </div>
@@ -21,7 +21,7 @@
           <li class="list-group-item">Published Total Freight: {{subcarrier.PublishedTotalFreight}}</li>
         </ul>-->
 
-        <table class="table bg-info border-secondary">
+        <table class="table bg-light border-secondary">
           <tbody>
             <tr>
               <td>Discounted Total Freight:</td>
@@ -58,14 +58,14 @@
           <div class="modal" role="dialog" tabindex="-1" [ngStyle]="{'display':display}" id="exampleModal">
             <div class="modal-dialog">
               <div class="modal-content" *ngFor="let carrierDetails of selectedDetailsList">
-                <div class="modal-header bg-light">
-                  <h4 class="modal-title">{{carrierDetails.Company}}</h4>
+                <div class="modal-header bg-info">
+                  <h4 class="modal-title text-dark">{{carrierDetails.Company}}</h4>
                   <button type="button" class="close" (click)="onCloseHandled()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <div class="modal-body" style="height:460px">
-                  <h6>Tracking Number: {{carrierDetails.TrackingNumber}}</h6>
+                <div class="modal-body bg-light" style="height:460px">
+                  <h6 class="text-dark">Tracking Number: {{carrierDetails.TrackingNumber}}</h6>
 
-                  <div class="container-fluid bg-info">
+                  <div class="container-fluid ">
                     <div class="row">
                       <div class="col-6 col-md-6 text-dark">
                         Active Date Time:
